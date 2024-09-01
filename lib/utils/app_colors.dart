@@ -4,9 +4,12 @@ class AppColors {
   /// Colors
   static const Color onBoardingBGColor = Color(0xFF1483C2);
   static const Color primaryColor = Color(0xFF0D6EFD);
+  static const Color backgroundColor = Color(0xFFF7F7F9);
+  static const Color itemTitleGrey = Color(0xFF6A6A6A);
+
   static const Color accentColor = Color(0xFFFFB21A);
   static Color accentColorShade = const Color(0xFFFF473A).withOpacity(0.1);
-  static const Color grayColor = Color(0xFF5D5D5D);
+  static const Color grayColor = Color(0xFFD8D8D8);
   static const Color lightBlueColor = Color(0xFFEEF7FF);
   static const Color textDarkColor = Color(0xFF0E1923);
   static const Color backgroundDarkColor = Color(0xFF252525);
@@ -19,7 +22,7 @@ class AppColors {
   static const Color darkAshColor = Color(0xFFCDCDCD);
   static const Color errorRedColor = Color(0xFFFF2212);
   static const Color successGreenColor = Color(0xFF1EBB70);
-  static const Color blackColor = Colors.black;
+  static const Color blackColor = Color(0xFF2B2B2B);
   static const Color textFieldBottomBorderEnabled = Color(0xFFE2E7ED);
   static const Color whiteDark = Color(0xFFF2F2F2);
   static const Color darkGray = Color(0xFF3A3B3E);

@@ -41,7 +41,7 @@ class FirstOn extends StatelessWidget {
               style: GoogleFonts.raleway(
                   color: AppColors.whiteColor,
                   fontSize: 30,
-                  fontWeight: FontWeight.w700),
+                  fontWeight: FontWeight.w800),
             ),
           ),
         ),
