@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:snickz/features/presentation/views/cart/payment_view.dart';
 import 'package:snickz/features/presentation/widgets/app_bar.dart';
 import 'package:snickz/features/presentation/widgets/cart_list_item.dart';
+import 'package:snickz/features/presentation/widgets/main_button.dart';
 import 'package:snickz/utils/app_constants.dart';
 import 'package:snickz/utils/app_utils.dart';
 
@@ -86,40 +88,41 @@ class _CartViewState extends State<CartView>
                 SizedBox(
                   height: 52.h,
                   child: ListView.builder(
-                      itemCount: cartItems.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                              top: index == 0 ? 10 : 0,
-                              bottom: index == cartItems.length - 1 ? 20 : 0),
-                          child: CartListItem(
-                            key: GlobalKey(debugLabel: '$index'),
-                            title: cartItems[index].title!,
-                            qty: cartItems[index].qty,
-                            price: cartItems[index].price,
-                            onDelete: () {
-                              setState(() {
-                                cartItems.remove(cartItems[index]);
+                    itemCount: cartItems.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            top: index == 0 ? 10 : 0,
+                            bottom: index == cartItems.length - 1 ? 20 : 0),
+                        child: CartListItem(
+                          key: GlobalKey(debugLabel: '$index'),
+                          title: cartItems[index].title!,
+                          qty: cartItems[index].qty,
+                          price: cartItems[index].price,
+                          onDelete: () {
+                            setState(() {
+                              cartItems.remove(cartItems[index]);
+                              calculateBill();
+                            });
+                          },
+                          onQtyAdd: () {
+                            setState(() {
+                              cartItems[index].qty++;
+                              calculateBill();
+                            });
+                          },
+                          onQtyMin: () {
+                            setState(() {
+                              if (cartItems[index].qty != 0) {
+                                cartItems[index].qty--;
                                 calculateBill();
-                              });
-                            },
-                            onQtyAdd: () {
-                              setState(() {
-                                cartItems[index].qty++;
-                                calculateBill();
-                              });
-                            },
-                            onQtyMin: () {
-                              setState(() {
-                                if (cartItems[index].qty != 0) {
-                                  cartItems[index].qty--;
-                                  calculateBill();
-                                }
-                              });
-                            },
-                          ),
-                        );
-                      }),
+                              }
+                            });
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 )
               ],
             ),
@@ -221,35 +224,18 @@ class _CartViewState extends State<CartView>
                         ],
                       ),
                       SizedBox(height: 4.h),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          surfaceTintColor: const MaterialStatePropertyAll(
-                              Colors.transparent),
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.primaryColor),
-                          elevation: const MaterialStatePropertyAll(0),
-                          padding: const MaterialStatePropertyAll(
-                              EdgeInsets.symmetric(vertical: 16)),
-                          shape: MaterialStatePropertyAll(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(13),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Checkout',
-                              style: GoogleFonts.raleway(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.whiteColor,
-                              ),
-                            ),
-                          ],
-                        ),
+                      MainButton(
+                        title: 'Checkout',
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentView(
+                                    subTotal: subTotal,
+                                    total: total,
+                                    deliveryFee: deliveryFee)),
+                          );
+                        },
                       ),
                     ],
                   ),

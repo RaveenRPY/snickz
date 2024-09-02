@@ -29,5 +29,13 @@ class AppImages {
   static const String icFavorite = "${kSVGImagePath}ic_fav$kSVGType";
   static const String icNotifications = "${kSVGImagePath}ic_notification$kSVGType";
   static const String icProfile = "${kSVGImagePath}ic_profile$kSVGType";
+  static const String icEmail = "${kSVGImagePath}ic_email$kSVGType";
+  static const String icPhone = "${kSVGImagePath}ic_phone$kSVGType";
+
+  /// Lotties
+  static const String failedDialog = '${kLottiePath}failedError$kLottieType';
+  static const String confirmDialog = '${kLottiePath}q1$kLottieType';
+  static const String warnDialog = '${kLottiePath}warning$kLottieType';
+  static const String successDialog = '${kLottiePath}successNew$kLottieType';
 
 }

@@ -70,7 +70,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   color: AppColors.blackColor,
                   fontWeight: FontWeight.w600),
             ),
-      leading: Padding(
+      leading: widget.leadingIcon != null ? Padding(
         padding: const EdgeInsets.all(7.0),
         child: InkWell(
           highlightColor: Colors.transparent,
@@ -89,7 +89,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             widget.leadingOnTap!();
           },
         ),
-      ),
+      ) : null,
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 12),

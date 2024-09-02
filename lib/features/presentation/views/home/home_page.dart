@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(
         isHome: true,
         title: 'Explorer',

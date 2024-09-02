@@ -1,11 +1,11 @@
 const String kPNGImagePath = 'assets/images/png/';
 const String kSVGImagePath = 'assets/images/svg/';
-const String kAnimImagePath = 'animations/';
+const String kLottiePath = 'assets/images/lottie/';
 
 const String kSVGType = '.svg';
 const String kPngType = '.png';
 const String kPDFType = '.pdf';
-const String kAnimType = '.json';
+const String kLottieType = '.json';
 
 const kAppOpacity = 0.25;
 const double kLeftRightMarginOnBoarding = 16;
