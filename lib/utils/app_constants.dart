@@ -1,3 +1,5 @@
+import '../features/domain/entities/item_entity.dart';
+
 const String kPNGImagePath = 'assets/images/png/';
 const String kSVGImagePath = 'assets/images/svg/';
 const String kLottiePath = 'assets/images/lottie/';
@@ -13,6 +15,9 @@ const double kTopMarginOnBoarding = 30;
 const double kBottomMargin = 20;
 const double kTextFieldBottomBorderHeight = 2;
 const double kOnBoardingMarginBetweenFields = 25;
+
+List<ItemEntity> allItemsList = [];
+List<ItemEntity> cartItemsList = [];
 
 class AppConstants {
 

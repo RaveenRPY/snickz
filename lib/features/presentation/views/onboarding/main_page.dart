@@ -11,16 +11,16 @@ import 'package:snickz/features/presentation/views/onboarding/third_widget.dart'
 import 'package:snickz/utils/app_colors.dart';
 import 'package:snickz/utils/app_images.dart';
 
-class SignInPage extends StatefulWidget {
+class OnBoardingPage extends StatefulWidget {
   static const routeName = "/sign-in";
 
-  const SignInPage({super.key});
+  const OnBoardingPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _OnBoardingPageState extends State<OnBoardingPage> {
   int _selectedPage = 0;
   late final _pageController = PageController(initialPage: _selectedPage);
   late final Timer? _timer;

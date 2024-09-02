@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:snickz/features/presentation/bloc/main_bloc.dart';
 import 'package:snickz/features/presentation/widgets/app_bar.dart';
 import 'package:snickz/features/presentation/widgets/bottom_navigation_bar.dart';
 import 'package:snickz/features/presentation/widgets/item_card.dart';
@@ -13,6 +15,7 @@ import 'package:snickz/utils/app_constants.dart';
 import 'package:snickz/utils/app_images.dart';
 
 import '../../../../utils/app_colors.dart';
+import '../../../domain/entities/item_entity.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,6 +35,15 @@ final List<String> items = [
 class _HomePageState extends State<HomePage> {
   int selectedBottomIndex = 0;
   int selectedCatIndex = 0;
+  List<ItemEntity> itemEntityList = [];
+
+  @override
+  void initState() {
+    setState(() {
+      itemEntityList = allItemsList;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +120,10 @@ class _HomePageState extends State<HomePage> {
                           elevation: MaterialStatePropertyAll(6),
                           surfaceTintColor:
                               MaterialStatePropertyAll(Colors.transparent),
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColors.primaryColor),
-                          padding: MaterialStatePropertyAll(EdgeInsets.all(14)),
+                          backgroundColor: MaterialStatePropertyAll(
+                              AppColors.primaryColor),
+                          padding:
+                              MaterialStatePropertyAll(EdgeInsets.all(14)),
                           fixedSize: MaterialStatePropertyAll(Size.infinite)),
                       onPressed: () {},
                       child: SvgPicture.asset(
@@ -155,8 +168,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                         elevation: MaterialStatePropertyAll(
                             selectedCatIndex == index ? 5 : 1),
-                        surfaceTintColor:
-                            const MaterialStatePropertyAll(Colors.transparent),
+                        surfaceTintColor: const MaterialStatePropertyAll(
+                            Colors.transparent),
                         backgroundColor: MaterialStatePropertyAll(
                             selectedCatIndex == index
                                 ? AppColors.primaryColor
@@ -188,11 +201,15 @@ class _HomePageState extends State<HomePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   primary: false,
-                  itemCount: 6,
-                  itemBuilder: (BuildContext context, int index){
-                    return ItemCard(index: index);
+                  itemCount: itemEntityList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ItemCard(
+                      index: index,
+                      itemEntity: itemEntityList[index],
+                    );
                   },
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 15,
                     mainAxisExtent: 250,
@@ -234,14 +251,6 @@ class _HomePageState extends State<HomePage> {
             color: AppColors.whiteColor,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildListItem(BuildContext context, int index) {
-    return Align(
-      child: ItemCard(
-        index: index,
       ),
     );
   }

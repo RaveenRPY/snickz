@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:snickz/features/presentation/bloc/main_bloc.dart';
 import 'package:snickz/features/presentation/views/splash/splash_view.dart';
 import 'package:snickz/utils/app_colors.dart';
 
@@ -25,13 +27,18 @@ class MyApp extends StatelessWidget {
 
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
-        return MaterialApp(
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-            useMaterial3: true,
-            scaffoldBackgroundColor: AppColors.backgroundColor,
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<MainBloc>(create: (context) => MainBloc()),
+          ],
+          child: MaterialApp(
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+              useMaterial3: true,
+              scaffoldBackgroundColor: AppColors.backgroundColor,
+            ),
+            home: const SplashView(),
           ),
-          home: const SplashView(),
         );
       },
     );

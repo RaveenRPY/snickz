@@ -14,4 +14,26 @@ class ItemEntity {
     this.imgUrl,
     required this.qty,
   });
+
+  factory ItemEntity.fromJson(Map<String, dynamic> json) {
+    return ItemEntity(
+      title: json['title'],
+      price: json['price'],
+      imgUrl: json['imgUrl'],
+      description: json['description'],
+      category: json['category'],
+      qty: json['qty'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'price': price,
+      'imgUrl': imgUrl,
+      'description': description,
+      'category': category,
+      'qty': qty,
+    };
+  }
 }
