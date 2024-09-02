@@ -77,7 +77,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           borderRadius: BorderRadius.circular(90),
           child: Container(
             decoration: BoxDecoration(
-                color: AppColors.whiteColor,
+                color: widget.leadingIcon != null ? AppColors.whiteColor: Colors.transparent,
                 borderRadius: BorderRadius.circular(90)),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -98,11 +98,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
             borderRadius: BorderRadius.circular(90),
             child: Container(
               decoration: BoxDecoration(
-                  color: AppColors.whiteColor,
+                  color: widget.actionIcon != null ? AppColors.whiteColor: Colors.transparent,
                   borderRadius: BorderRadius.circular(90)),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                // child: SvgPicture.asset(AppImages.icCart),
                 child: widget.actionIcon,
               ),
             ),

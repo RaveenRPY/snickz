@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 import 'package:snickz/features/presentation/views/splash/splash_view.dart';
+import 'package:snickz/utils/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
             useMaterial3: true,
+            scaffoldBackgroundColor: AppColors.backgroundColor,
           ),
           home: const SplashView(),
         );

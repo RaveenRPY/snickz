@@ -18,10 +18,16 @@ class AppImages {
   static const String onboardingSecondElements = "${kSVGImagePath}second_elements$kSVGType";
   static const String onboardingThirdElements = "${kSVGImagePath}third_elements$kSVGType";
 
+  static const String detailsCurve = "${kSVGImagePath}curve$kSVGType";
+
   /// SVG Icons
   static const String icCart = "${kSVGImagePath}ic_cart$kSVGType";
   static const String icMenu = "${kSVGImagePath}ic_menu$kSVGType";
   static const String icSliders = "${kSVGImagePath}ic_sliders$kSVGType";
   static const String icSearch = "${kSVGImagePath}ic_search$kSVGType";
+  static const String icHome = "${kSVGImagePath}ic_home$kSVGType";
+  static const String icFavorite = "${kSVGImagePath}ic_fav$kSVGType";
+  static const String icNotifications = "${kSVGImagePath}ic_notification$kSVGType";
+  static const String icProfile = "${kSVGImagePath}ic_profile$kSVGType";
 
 }

@@ -188,7 +188,9 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   primary: false,
                   itemCount: 6,
-                  itemBuilder: _buildMenuItem,
+                  itemBuilder: (BuildContext context, int index){
+                    return ItemCard(index: index);
+                  },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 15,
@@ -226,8 +228,6 @@ class _HomePageState extends State<HomePage> {
             setState(() {});
           },
           backgroundColor: AppColors.primaryColor,
-          // elevation: 10.0,
-
           child: SvgPicture.asset(
             AppImages.icCart,
             color: AppColors.whiteColor,
@@ -237,19 +237,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildMenuItem(BuildContext context, int index) {
+  Widget _buildListItem(BuildContext context, int index) {
     return Align(
-      child: InkWell(
-        onTap: () {},
-        highlightColor: Colors.white,
-        hoverColor: Colors.white,
-        splashColor: AppColors.accentColor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(16),
-        ),
-        child: ItemCard(
-          index: index,
-        ),
+      child: ItemCard(
+        index: index,
       ),
     );
   }

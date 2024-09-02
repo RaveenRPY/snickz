@@ -63,7 +63,7 @@ class _CustomBottomNaviBarState extends State<CustomBottomNaviBar> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      AppImages.icCart,
+                      AppImages.icHome,
                       color: selectedIndex == 0
                           ? AppColors.primaryColor
                           : AppColors.blackColor,
@@ -81,7 +81,7 @@ class _CustomBottomNaviBarState extends State<CustomBottomNaviBar> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      AppImages.icCart,
+                      AppImages.icFavorite,
                       color: selectedIndex == 1
                           ? AppColors.primaryColor
                           : AppColors.blackColor,
@@ -100,7 +100,7 @@ class _CustomBottomNaviBarState extends State<CustomBottomNaviBar> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      AppImages.icCart,
+                      AppImages.icNotifications,
                       color: selectedIndex == 2
                           ? AppColors.primaryColor
                           : AppColors.blackColor,
@@ -118,7 +118,7 @@ class _CustomBottomNaviBarState extends State<CustomBottomNaviBar> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      AppImages.icCart,
+                      AppImages.icProfile,
                       color: selectedIndex == 3
                           ? AppColors.primaryColor
                           : AppColors.blackColor,

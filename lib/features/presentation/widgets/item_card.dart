@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:snickz/features/presentation/views/overview/item_details_view.dart';
 
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_constants.dart';
@@ -63,6 +64,10 @@ class _ItemCardState extends State<ItemCard> {
           GestureDetector(
             onTap: (){
               log('Tapped White area - ${widget.index}');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ItemDetailsView()),
+              );
             },
             child: Column(
               children: [
