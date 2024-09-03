@@ -9,6 +9,7 @@ import 'package:snickz/utils/app_constants.dart';
 import 'package:snickz/utils/app_images.dart';
 
 import '../../bloc/main_bloc.dart';
+import '../../widgets/custom_dialog_box.dart';
 import '../onboarding/main_page.dart';
 
 class SplashView extends StatefulWidget {
@@ -47,6 +48,20 @@ class _SplashViewState extends State<SplashView> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const OnBoardingPage()),
+          );
+        }else if (state is GetShoesFailedState) {
+          CustomDialogBox.show(
+            context,
+            image: AppImages.successDialog,
+            title: 'Oops !',
+            message: 'Something went wrong',
+            isTwoButton: false,
+            positiveButtonText: 'Try Again',
+            positiveButtonTap: () {
+              Navigator.pop(context);
+              BlocProvider.of<MainBloc>(context).add(GetCartItemsEvent());
+              BlocProvider.of<MainBloc>(context).add(GetAllShoesEvent());
+            },
           );
         }
       },

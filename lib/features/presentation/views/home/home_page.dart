@@ -93,27 +93,6 @@ class _HomePageState extends State<HomePage> {
     return BlocListener<MainBloc, MainState>(
       listener: (context, state) {
         if (state is SetCartItemsSuccessState) {
-          Future.delayed(const Duration(milliseconds: 1500), () {
-            CustomDialogBox.show(
-              context,
-              image: AppImages.successDialog,
-              title: 'Success',
-              message: 'Successfully added to your cart',
-              isTwoButton: true,
-              positiveButtonText: 'Okay',
-              positiveButtonTap: () {
-                Navigator.pop(context);
-              },
-              negativeButtonText: 'Go to Cart',
-              negativeButtonTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CartView()),
-                );
-              },
-            );
-          });
         }
       },
       child: Scaffold(

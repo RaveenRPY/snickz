@@ -18,8 +18,15 @@ class ItemCard extends StatefulWidget {
   final int? index;
   final ItemEntity itemEntity;
   final String? image;
+  final bool? isInCart;
 
-  const ItemCard({super.key, this.index, required this.itemEntity, this.image});
+  const ItemCard({
+    super.key,
+    this.index,
+    required this.itemEntity,
+    this.image,
+    this.isInCart = false,
+  });
 
   @override
   State<ItemCard> createState() => _ItemCardState();
@@ -36,6 +43,7 @@ class _ItemCardState extends State<ItemCard> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,15 +72,17 @@ class _ItemCardState extends State<ItemCard> {
               child: Container(
                 width: 40,
                 height: 40,
-                decoration: const BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: widget.isInCart!
+                      ? AppColors.successGreenColor
+                      : AppColors.primaryColor,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
                 ),
-                child: const Icon(
-                  Icons.add,
+                child: Icon(
+                  widget.isInCart! ? Icons.check : Icons.add,
                   color: AppColors.whiteColor,
                 ),
               ),

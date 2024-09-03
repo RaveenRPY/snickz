@@ -30,25 +30,29 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   Future<void> _handleGetAllShoesEvent(
       GetAllShoesEvent event, Emitter<MainState> emit) async {
     emit(GetShoesLoadingState());
-    final result = await useCase();
+    try {
+      final result = await useCase();
 
-    emit(result.fold((l) {
-      return GetShoesFailedState();
-    }, (r) {
-      return GetShoesLoadedState(
-          itemEntityList: r
-              .map(
-                (item) => ItemEntity(
-                  qty: 1,
-                  title: item.name,
-                  price: double.parse(item.price!),
-                  description: item.description,
-                  category: item.category,
-                  imgUrl: item.image,
-                ),
-              )
-              .toList());
-    }));
+      emit(result.fold((l) {
+        return GetShoesFailedState();
+      }, (r) {
+        return GetShoesLoadedState(
+            itemEntityList: r
+                .map(
+                  (item) => ItemEntity(
+                    qty: 1,
+                    title: item.name,
+                    price: double.parse(item.price!),
+                    description: item.description,
+                    category: item.category,
+                    imgUrl: item.image,
+                  ),
+                )
+                .toList());
+      }));
+    } catch (e) {
+      emit(GetShoesFailedState());
+    }
   }
 
   Future<void> _handleSetCartItemsEvent(
@@ -62,6 +66,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       emit(SetCartItemsFailedState());
     }
   }
+
   Future<void> _handleGetCartItemsEvent(
       GetCartItemsEvent event, Emitter<MainState> emit) async {
     emit(GetCartItemsLoadingState());
@@ -75,6 +80,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       emit(GetCartItemsFailedState());
     }
   }
+
   Future<void> _handleClearCartItemsEvent(
       ClearCartItemsEvent event, Emitter<MainState> emit) async {
     emit(ClearCartItemsLoadingState());
