@@ -56,7 +56,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     emit(SetCartItemsLoadingState());
     try {
       await appSharedData!.setCartItems(event.items);
-      emit(SetCartItemsLoadedState());
+      emit(SetCartItemsSuccessState());
     } catch (e) {
       print(e);
       emit(SetCartItemsFailedState());
@@ -79,7 +79,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       ClearCartItemsEvent event, Emitter<MainState> emit) async {
     emit(ClearCartItemsLoadingState());
     try {
-      await appSharedData!.getCartItems();
+      await appSharedData!.clearCartItems();
       cartItemsList.clear();
 
       emit(ClearCartItemsLoadedState());

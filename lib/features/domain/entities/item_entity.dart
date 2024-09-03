@@ -3,7 +3,7 @@ class ItemEntity {
   final String? category;
   final double? price;
   final String? description;
-  final String? imgUrl;
+  String? imgUrl;
   int qty;
 
   ItemEntity({

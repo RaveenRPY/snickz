@@ -77,7 +77,7 @@ class _CartViewState extends State<CartView>
             log('Loaded');
           } else if (state is GetCartItemsFailedState) {
             log('Failed');
-          } else if (state is SetCartItemsLoadedState) {
+          } else if (state is SetCartItemsSuccessState) {
             log('Successfully saved to shared');
           }
         },
@@ -116,6 +116,7 @@ class _CartViewState extends State<CartView>
                               title: cartItems[index].title!,
                               qty: cartItems[index].qty,
                               price: cartItems[index].price,
+                              image: cartItems[index].imgUrl,
                               onDelete: () {
                                 setState(() {
                                   cartItems.remove(cartItems[index]);
@@ -151,7 +152,15 @@ class _CartViewState extends State<CartView>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(AppColors.separationLinesColor)),onPressed: (){}, icon: const Icon(Icons.clear_all_rounded, size: 40,)),
+                            IconButton(
+                                style: const ButtonStyle(
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        AppColors.separationLinesColor)),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.clear_all_rounded,
+                                  size: 40,
+                                )),
                             const SizedBox(height: 15),
                             Text(
                               'Empty !',

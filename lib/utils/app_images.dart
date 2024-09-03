@@ -9,6 +9,9 @@ class AppImages {
   static const String onboardingThirdShoe = "${kPNGImagePath}third_shoe$kPngType";
 
   static const String itemShoe1 = "${kPNGImagePath}shoe1$kPngType";
+  static const String itemShoe2 = "${kPNGImagePath}shoe2$kPngType";
+  static const String itemShoe3 = "${kPNGImagePath}shoe3$kPngType";
+  static const String itemShoe4 = "${kPNGImagePath}shoe4$kPngType";
 
   /// SVG
   static const String appLogo = "${kSVGImagePath}logo$kSVGType";

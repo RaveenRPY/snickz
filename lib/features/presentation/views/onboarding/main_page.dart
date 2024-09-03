@@ -30,7 +30,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 3), (time) async {
+    _timer = Timer.periodic(const Duration(seconds: 5), (time) async {
       if (_selectedPage < _pageItem.length - 1) {
         final nextPage = (_pageController.page?.toInt() ?? 0) + 1;
         await _pageController.animateToPage(

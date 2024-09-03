@@ -18,8 +18,9 @@ import '../../widgets/app_bar.dart';
 
 class ItemDetailsView extends StatefulWidget {
   final ItemEntity itemEntity;
+  final String? image;
 
-  const ItemDetailsView({super.key, required this.itemEntity});
+  const ItemDetailsView({super.key, required this.itemEntity, this.image});
 
   @override
   State<ItemDetailsView> createState() => _ItemDetailsViewState();
@@ -28,6 +29,7 @@ class ItemDetailsView extends StatefulWidget {
 class _ItemDetailsViewState extends State<ItemDetailsView> {
   bool _isLoading = false;
   bool _isSuccess = false;
+  late ItemEntity newItemEntity;
 
   Future<void> _handleButtonPress(ItemEntity newItem) async {
     setState(() {
@@ -41,12 +43,21 @@ class _ItemDetailsViewState extends State<ItemDetailsView> {
   }
 
   @override
+  void initState() {
+    setState(() {
+      newItemEntity = widget.itemEntity;
+      newItemEntity.imgUrl = widget.image;
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<MainBloc, MainState>(
       listener: (context, state) {
         if (state is SetCartItemsLoadingState) {
           log('Loading.......');
-        } else if (state is SetCartItemsLoadedState) {
+        } else if (state is SetCartItemsSuccessState) {
           Future.delayed(const Duration(seconds: 1), () {
             setState(() {
               _isLoading = false;
@@ -127,7 +138,7 @@ class _ItemDetailsViewState extends State<ItemDetailsView> {
                             width: double.infinity,
                             height: 32.h,
                             child: Image.asset(
-                              AppImages.itemShoe1,
+                              widget.image ?? AppImages.itemShoe1,
                               scale: 0.9,
                               fit: BoxFit.fitHeight,
                             ),
@@ -165,7 +176,7 @@ class _ItemDetailsViewState extends State<ItemDetailsView> {
                   onPressed: () {
                     _isLoading || _isSuccess
                         ? null
-                        : _handleButtonPress(widget.itemEntity);
+                        : _handleButtonPress(newItemEntity);
                   },
                   child: _isLoading
                       ? const SizedBox(

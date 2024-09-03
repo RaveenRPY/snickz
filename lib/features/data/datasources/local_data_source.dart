@@ -28,7 +28,7 @@ class LocalDataSource {
     }
   }
 
-  Future<void> clearProducts() async {
+  Future<void> clearCartItems() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('cartItems');
   }

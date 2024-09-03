@@ -4,6 +4,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,7 @@ import 'package:snickz/utils/app_utils.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../domain/entities/item_entity.dart';
+import '../../bloc/main_bloc.dart';
 
 class PaymentView extends StatefulWidget {
   final double subTotal;
@@ -479,9 +481,16 @@ class _PaymentViewState extends State<PaymentView>
                       MainButton(
                         title: 'Place Order',
                         onPressed: () {
+                          _formKey1.currentState!.validate();
+                          _formKey2.currentState!.validate();
+                          _formKey3.currentState!.validate();
+
                           if (isEmailValidated! &&
                               isMobileValidated! &&
                               isAddressValidated!) {
+                            BlocProvider.of<MainBloc>(context)
+                                .add(ClearCartItemsEvent());
+
                             CustomDialogBox.show(
                               context,
                               image: AppImages.successDialog,

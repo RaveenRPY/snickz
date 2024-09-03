@@ -8,6 +8,7 @@ import '../../../utils/app_images.dart';
 class CartListItem extends StatefulWidget {
   final String title;
   final double? price;
+  final String? image;
   final Function? onDelete;
   final Function? onQtyAdd;
   final Function? onQtyMin;
@@ -18,6 +19,7 @@ class CartListItem extends StatefulWidget {
       required this.title,
       this.price,
       this.qty = 1,
+      this.image,
       this.onDelete,
       this.onQtyAdd,
       this.onQtyMin});
@@ -96,7 +98,7 @@ class _CartListItemState extends State<CartListItem> {
                     color: AppColors.lightAshColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Image.asset(AppImages.itemShoe1),
+                  child: Image.asset(widget.image ?? AppImages.itemShoe1),
                 ),
                 const SizedBox(width: 20),
                 Expanded(

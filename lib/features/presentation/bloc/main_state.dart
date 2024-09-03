@@ -28,7 +28,7 @@ class SetCartItemsLoadingState extends MainState {}
 
 class SetCartItemsFailedState extends MainState {}
 
-class SetCartItemsLoadedState extends MainState {}
+class SetCartItemsSuccessState extends MainState {}
 
 class ClearCartItemsLoadingState extends MainState {}
 
